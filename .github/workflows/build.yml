@@ -23,10 +23,10 @@ jobs:
         pip install --upgrade pip
         pip install buildozer cython==0.29.36
 
-    - name: Accept Android SDK licenses and Build with Buildozer
+    - name: Build with Buildozer
+      env:
+        BUILDER_ACCEPT_LICENSES: "1"
       run: |
-        mkdir -p ~/.buildozer/android/platform/android-sdk
-        yes | sdkmanager --licenses || true
         buildozer -v android debug
 
     - name: Upload APK
